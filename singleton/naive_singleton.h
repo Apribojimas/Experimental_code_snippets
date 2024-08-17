@@ -51,7 +51,7 @@ Singleton<T, M>::~Singleton() {
 
 template <typename T, typename M>
 template<typename... Ts>
-static void Singleton<T, M>::Create(Ts&&... args) {
+void Singleton<T, M>::Create(Ts&&... args) {
   if (instance_ != nullptr) {
     Release();
   }
