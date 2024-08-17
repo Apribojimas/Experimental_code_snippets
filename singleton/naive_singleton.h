@@ -31,6 +31,9 @@ public:
   template<typename... Ts>
   static T* GetInstance(Ts&&... args);
 
+  // check if instance already created
+  [[nodiscard]] static bool HasInstance();
+
 private:
   static M lock_;  // in case of multithreading use std::mutex
   static std::unique_ptr<T> instance_;
@@ -75,6 +78,11 @@ T* Singleton<T, M>::GetInstance(Ts&&... args) {
     Create(std::forward<Ts>(args)...);
   }
   return instance_.get();
+}
+
+template <typename T, typename M>
+bool Singleton<T, M>::HasInstance() {
+  return instance_ != nullptr;
 }
 
 template <typename T, typename M> M Singleton<T, M>::lock_;
