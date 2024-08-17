@@ -29,10 +29,14 @@ public:
 
   // retrieve pointer to instance and create if neccesary
   template<typename... Ts>
-  static T* GetInstance(Ts&&... args);
+  [[nodiscard]] static T* GetInstance(Ts&&... args);
 
   // check if instance already created
   [[nodiscard]] static bool HasInstance();
+
+  // helper operator's
+  [[nodiscard]] T* operator->();
+  [[nodiscard]] const T* operator->() const;
 
 private:
   static M lock_;  // in case of multithreading use std::mutex
@@ -84,6 +88,23 @@ template <typename T, typename M>
 bool Singleton<T, M>::HasInstance() {
   return instance_ != nullptr;
 }
+
+template <typename T, typename M>
+T* Singleton<T, M>::operator->() {
+  if (instance_ == nullptr) {
+    return GetInstance();
+  }
+  return instance_.get();
+}
+
+template <typename T, typename M>
+const T* Singleton<T, M>::operator->() const {
+  if (instance_ == nullptr) {
+    return GetInstance();
+  }
+  return instance_.get();
+}
+
 
 template <typename T, typename M> M Singleton<T, M>::lock_;
 template <typename T, typename M> std::unique_ptr<T> Singleton<T, M>::instance_;
