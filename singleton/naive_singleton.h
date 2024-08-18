@@ -108,4 +108,3 @@ const T* Singleton<T, M>::operator->() const {
 
 template <typename T, typename M> M Singleton<T, M>::lock_;
 template <typename T, typename M> std::unique_ptr<T> Singleton<T, M>::instance_;
-
