@@ -1,5 +1,3 @@
-// https://github.com/ConorWilliams/libfork/blob/main/include/libfork/core/impl/manual_lifetime.hpp
-
 
 template <class T> class Indestructible {
     alignas(T) unsigned char data_[sizeof(T)];  // using 'new placement' trick
