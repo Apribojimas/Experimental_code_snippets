@@ -1,5 +1,3 @@
-// https://github.com/ElementAstro/Lithium/blob/master/src/atom/type/indestructible.hpp
-
 
 // class for taking ownership and avoid call destructor
   template<typename T>
