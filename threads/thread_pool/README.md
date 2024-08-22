@@ -27,3 +27,5 @@
 * [BS::thread_pool](https://github.com/bshoshany/thread-pool) - BS::thread_pool: a fast, lightweight, and easy-to-use C++17 thread pool library
 * [Async++](https://github.com/Amanieu/asyncplusplus) - Async++ concurrency framework for C++11
    - [work_steal_queue](https://github.com/Amanieu/asyncplusplus/blob/master/src/work_steal_queue.h) - Chase-Lev work stealing deque
+* [eventpp](https://github.com/wqking/eventpp) - Event Dispatcher and callback list for C++
+    - [EventDispatcherBase](https://github.com/wqking/eventpp/blob/master/include/eventpp/eventdispatcher.h) - dispatcher interface
