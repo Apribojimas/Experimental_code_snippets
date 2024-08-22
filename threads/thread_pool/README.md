@@ -30,3 +30,4 @@
 * [eventpp](https://github.com/wqking/eventpp) - Event Dispatcher and callback list for C++
     - [EventDispatcherBase](https://github.com/wqking/eventpp/blob/master/include/eventpp/eventdispatcher.h) - dispatcher interface
 * [workspace](https://github.com/CodingHanYa/workspace) - workspace is a lightweight asynchronous execution framework based on C++11, which supports: asynchronous concurrent execution of general tasks, priority task scheduling, adaptive dynamic thread pools, efficient static thread pools, and exception handling mechanisms.
+* [Scheduling](https://github.com/dpuyda/scheduling) - A simple and fast library allowing to run async tasks and execute task graphs.
