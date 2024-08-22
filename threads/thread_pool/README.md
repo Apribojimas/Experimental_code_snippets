@@ -36,6 +36,6 @@
 * [reactor](https://github.com/fantasy-peak/reactor) - C++17 and reactor mode task/timer executor
 * [ThreadPoolLib](https://github.com/geru-scotland/ThreadPoolLib) - A simple but efficient C++ thread/worker pool library for asynchronous task management.
 * [CXX11ThreadPool](https://github.com/upider/CXX11ThreadPool) - Module/architecture solution?
-* [quickpool](https://github.com/tnagler/quickpool) - solution for free functions
+* [quickpool](https://github.com/tnagler/quickpool) - solution for free functions, memory aligned hints
 * [madthreading](https://github.com/jrmadsen/madthreading) - A low-overhead, task-based threading API using a thread-pool of C++11 threads
     - [task](https://github.com/jrmadsen/madthreading/blob/master/madthreading/threading/task/task.hh) - solution for keeping task results
