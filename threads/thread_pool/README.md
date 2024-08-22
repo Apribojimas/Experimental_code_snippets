@@ -40,3 +40,4 @@
 * [madthreading](https://github.com/jrmadsen/madthreading) - A low-overhead, task-based threading API using a thread-pool of C++11 threads
     - [task](https://github.com/jrmadsen/madthreading/blob/master/madthreading/threading/task/task.hh) - solution for keeping task results
 * [cyan](https://github.com/sayan-chaliha/cyan) - A lock-free, wait-free, event-driven, cross-platform, thread pool-backed asynchronous execution library in C++. 
+* [Work-Stealing Queue](https://github.com/taskflow/work-stealing-queue) - A fast work-stealing queue template in C++ or Lock-free unbounded single-producer multiple-consumer queue.
