@@ -2,7 +2,7 @@
 ## Scope of functionality
 * Create/Destroy
 * Start/Stop
-* Pause/Resume
+* Suspend(Pause)/Resume
 * Shutdown/Terminate
 * Timeout/Postpone/Interval
 * Duration of last execution
