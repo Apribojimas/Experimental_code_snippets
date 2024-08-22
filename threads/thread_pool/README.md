@@ -3,9 +3,11 @@
 * Create/Destroy
 * Start/Stop
 * Pause/Resume
+* Shutdown/ApplicationExit
 * Timeout/Postpone/Interval
 * Duration of last execution
 * Execution callback must support PRE/POST/ERROR/CALLBACK interfaces
+* 0 execeptions
 * Ideal for:
   - Actor framework mailbox
   - Event bus dispatcher
