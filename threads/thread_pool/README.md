@@ -3,7 +3,7 @@
 * Create/Destroy
 * Start/Stop
 * Pause/Resume
-* Shutdown/ApplicationExit
+* Shutdown/Terminate
 * Timeout/Postpone/Interval
 * Duration of last execution
 * Execution callback must support PRE/POST/ERROR/CALLBACK interfaces
