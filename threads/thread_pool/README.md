@@ -32,3 +32,4 @@
 * [workspace](https://github.com/CodingHanYa/workspace) - workspace is a lightweight asynchronous execution framework based on C++11, which supports: asynchronous concurrent execution of general tasks, priority task scheduling, adaptive dynamic thread pools, efficient static thread pools, and exception handling mechanisms.
 * [Scheduling](https://github.com/dpuyda/scheduling) - A simple and fast library allowing to run async tasks and execute task graphs.
 * [concurrencpp](https://github.com/David-Haim-zz/concurrencpp) - timer implementation
+* [SmartThreadPool](https://github.com/leosocy/SmartThreadPool) - priority task pools
