@@ -34,3 +34,4 @@
 * [concurrencpp](https://github.com/David-Haim-zz/concurrencpp) - timer implementation
 * [SmartThreadPool](https://github.com/leosocy/SmartThreadPool) - priority task pools
 * [reactor](https://github.com/fantasy-peak/reactor) - C++17 and reactor mode task/timer executor
+* [ThreadPoolLib](https://github.com/geru-scotland/ThreadPoolLib) - A simple but efficient C++ thread/worker pool library for asynchronous task management.
