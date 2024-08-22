@@ -25,3 +25,5 @@
 * [ThreadPool](https://github.com/progschj/ThreadPool) - A simple C++11 Thread Pool implementation
 * [dbg(…)](https://github.com/sharkdp/dbg-macro) - A dbg(…) macro for C++
 * [BS::thread_pool](https://github.com/bshoshany/thread-pool) - BS::thread_pool: a fast, lightweight, and easy-to-use C++17 thread pool library
+* [Async++](https://github.com/Amanieu/asyncplusplus) - Async++ concurrency framework for C++11
+   - [work_steal_queue](https://github.com/Amanieu/asyncplusplus/blob/master/src/work_steal_queue.h) - Chase-Lev work stealing deque
