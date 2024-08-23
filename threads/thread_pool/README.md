@@ -47,3 +47,4 @@
 * [transwarp](https://github.com/bloomen/transwarp) - Contains of requested functionality
 * [Yaaf](https://github.com/lysevi/yaaf/blob/master/libyaaf/utils/async/thread_manager.h) - Thread manager -> Thread pool
 * [TaskManager](https://github.com/Tastyep/TaskManager) - Simple closest implementation
+* [ThrottlingThreadPool](https://github.com/LoganEvans/ThrottlingThreadPool) - Intresting
