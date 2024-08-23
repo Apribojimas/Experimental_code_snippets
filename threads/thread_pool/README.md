@@ -42,3 +42,4 @@
 * [cyan](https://github.com/sayan-chaliha/cyan) - A lock-free, wait-free, event-driven, cross-platform, thread pool-backed asynchronous execution library in C++. 
 * [Work-Stealing Queue](https://github.com/taskflow/work-stealing-queue) - A fast work-stealing queue template in C++ or Lock-free unbounded single-producer multiple-consumer queue.
 * [enkiTS](https://github.com/dougbinks/enkiTS) - A permissively licensed C and C++ Task Scheduler for creating parallel programs. Requires C++11 support.
+* [transwarp](https://github.com/bloomen/transwarp) - Contains of requested functionality
