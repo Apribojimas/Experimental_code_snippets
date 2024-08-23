@@ -9,6 +9,7 @@
 * Execution callback must support PRE/POST/ERROR/CALLBACK/READY interfaces (Task(job))
 * 0 execeptions
 * Asyn/awaitable single execution
+* Current state: Uninitialized/Initialized/Running/Waiting/Stopped/Paused/Timeout/Shutdown/
 * Ideal for:
   - Actor framework mailbox
   - Event bus dispatcher
