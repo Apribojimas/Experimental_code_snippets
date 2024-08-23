@@ -1,6 +1,6 @@
 # Thread pool requirements
 ## Scope of functionality
-* Create/Destroy (ThreadPool/Thread/ThreadQueue/Task(job))
+* Create/Destroy (ThreadPool/Thread/ThreadQueue/Task(job/Context))
 * Start/Stop (ThreadPool/Thread/Task(job))
 * Suspend(Pause)/Resume (ThreadPool/Thread/Task(job))
 * Shutdown/Terminate (ThreadPool/Thread/Task(job))
