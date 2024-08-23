@@ -1,13 +1,14 @@
 # Thread pool requirements
 ## Scope of functionality
-* Create/Destroy
-* Start/Stop
-* Suspend(Pause)/Resume
-* Shutdown/Terminate
-* Timeout/Postpone/Interval
-* Duration of last execution
-* Execution callback must support PRE/POST/ERROR/CALLBACK interfaces
+* Create/Destroy (ThreadPool/Thread/ThreadQueue/Task(job))
+* Start/Stop (ThreadPool/Thread/Task(job))
+* Suspend(Pause)/Resume (ThreadPool/Thread/Task(job))
+* Shutdown/Terminate (ThreadPool/Thread/Task(job))
+* Timeout/Postpone/Interval (Task(job)) -> timer or IO
+* Duration of last execution (Task(job))
+* Execution callback must support PRE/POST/ERROR/CALLBACK/READY interfaces (Task(job))
 * 0 execeptions
+* Asyn/awaitable single execution
 * Ideal for:
   - Actor framework mailbox
   - Event bus dispatcher
