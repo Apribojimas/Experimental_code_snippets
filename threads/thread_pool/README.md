@@ -44,3 +44,4 @@
 * [Work-Stealing Queue](https://github.com/taskflow/work-stealing-queue) - A fast work-stealing queue template in C++ or Lock-free unbounded single-producer multiple-consumer queue.
 * [enkiTS](https://github.com/dougbinks/enkiTS) - A permissively licensed C and C++ Task Scheduler for creating parallel programs. Requires C++11 support.
 * [transwarp](https://github.com/bloomen/transwarp) - Contains of requested functionality
+* [Yaaf](https://github.com/lysevi/yaaf/blob/master/libyaaf/utils/async/thread_manager.h) - Thread manager -> Thread pool
