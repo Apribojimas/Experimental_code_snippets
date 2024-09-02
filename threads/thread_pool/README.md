@@ -19,7 +19,7 @@
   - Support threads priorities
   - MSVC & windows only? Embedded (dynamic memory allocation)?
   - Dependence only to STL library, google test framework. No BOOST or magic libraries
-  - C++17, coroutines?
+  - pure C++17 only. Most embedded don't support coroutines, conditional variables, future, promises, etc?
 
 ## Sources of ideas
 * [muduo](https://github.com/chenshuo/muduo) - Event-driven network library for multi-threaded Linux server in C++11
