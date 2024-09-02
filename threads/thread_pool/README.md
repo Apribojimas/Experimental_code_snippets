@@ -50,3 +50,4 @@
 * [ThrottlingThreadPool](https://github.com/LoganEvans/ThrottlingThreadPool) - Intresting
 * [DFS-IoT](https://github.com/Rudnik-Ilia/DFS-IoT) - Priority queues
 * [cpp-taskflow](https://github.com/artivis/cpp-taskflow) - Earlier fork of "TaskFlow", contains work stealing thread pool
+* [gws-polarlight-sunshine](https://github.com/Tencent/gws-polarlight-sunshine/blob/main/src/thread_pool.h) - Allow threads to execute unhindered while keeping full control over the threads.
