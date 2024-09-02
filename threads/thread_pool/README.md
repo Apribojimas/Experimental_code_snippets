@@ -52,3 +52,4 @@
 * [cpp-taskflow](https://github.com/artivis/cpp-taskflow) - Earlier fork of "TaskFlow", contains work stealing thread pool
 * [gws-polarlight-sunshine](https://github.com/Tencent/gws-polarlight-sunshine/blob/main/src/thread_pool.h) - Allow threads to execute unhindered while keeping full control over the threads.
 * [mango](https://github.com/tksuoran/erhe/blob/main/src/mango/include/mango/core/thread.hpp) - The tasks have no dependency to each other and can be executed in any order.
+* [koios](https://github.com/JPewterschmidt/koios) - A C++ coroutine library
