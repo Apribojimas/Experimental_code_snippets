@@ -24,7 +24,7 @@
 ## Sources of ideas
 * [muduo](https://github.com/chenshuo/muduo) - Event-driven network library for multi-threaded Linux server in C++11
     - [WeakCallback](https://github.com/chenshuo/muduo/blob/master/muduo/base/WeakCallback.h) - 
-* [ThreadPool](https://github.com/progschj/ThreadPool), [C++ Thread Pool](https://github.com/f-squirrel/thread_pool), [threadpool.hpp](https://github.com/leiless/threadpool.hpp), [ThreadPoolC++11](https://github.com/xingyuuchen/ThreadPool) - A simple C++11 Thread Pool implementation
+* [ThreadPool](https://github.com/progschj/ThreadPool), [C++ Thread Pool](https://github.com/f-squirrel/thread_pool), [threadpool.hpp](https://github.com/leiless/threadpool.hpp), [ThreadPoolC++11](https://github.com/xingyuuchen/ThreadPool), [intelRSD](https://github.com/intel/intelRSD/blob/master/PSME/common/agent-framework/include/agent-framework/threading/threadpool.hpp) - A simple C++11 Thread Pool implementation
 * [dbg(…)](https://github.com/sharkdp/dbg-macro) - A dbg(…) macro for C++
 * [BS::thread_pool](https://github.com/bshoshany/thread-pool) - BS::thread_pool: a fast, lightweight, and easy-to-use C++17 thread pool library
 * [Async++](https://github.com/Amanieu/asyncplusplus) - Async++ concurrency framework for C++11
