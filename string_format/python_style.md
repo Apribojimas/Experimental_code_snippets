@@ -10,3 +10,4 @@
 * https://github.com/jhanssen/fmt/blob/main/fmt.h
 * https://github.com/arajar/format/blob/master/Format.h
 * https://github.com/hun1er/stringpy/blob/main/include/stringpy/format.hpp
+* https://github.com/IohannRabeson/rescom/blob/main/sources/StringHelpers.hpp
