@@ -56,3 +56,4 @@
 * [1261385937](https://github.com/1261385937/thread_pool) - very high performance, lock free, roundRobin dispatching, steal available
 ## Libs
 * [Senders - A Standard Model for Asynchronous Execution in C++](https://github.com/NVIDIA/stdexec) - `std::execution`, the proposed C++ framework for asynchronous and parallel programming.
+* [reactor](https://github.com/fantasy-peak/reactor) - C++17 and reactor mode task/timer executor
