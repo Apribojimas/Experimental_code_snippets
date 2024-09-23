@@ -58,3 +58,4 @@
 * [Senders - A Standard Model for Asynchronous Execution in C++](https://github.com/NVIDIA/stdexec) - `std::execution`, the proposed C++ framework for asynchronous and parallel programming.
 * [reactor](https://github.com/fantasy-peak/reactor) - C++17 and reactor mode task/timer executor
 * [aco::thread_pool](https://github.com/antoniocoratelli/thread-pool/blob/main/library/include/aco/thread_pool.hpp) - C++17 thread-pool-based task scheduler.
+* [STLab](https://github.com/stlab/libraries) - Concurrency (C++20) and fork [stlab_libraries](https://github.com/jeffamstutz/stlab_libraries) for C++14
