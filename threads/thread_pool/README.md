@@ -61,3 +61,4 @@
 * [aco::thread_pool](https://github.com/antoniocoratelli/thread-pool/blob/main/library/include/aco/thread_pool.hpp) - C++17 thread-pool-based task scheduler.
 * [STLab](https://github.com/stlab/libraries) - Concurrency (C++20) and fork [stlab_libraries](https://github.com/jeffamstutz/stlab_libraries) for C++14
 * [Fiber Tasking Lib](https://github.com/RichieSams/FiberTaskingLib) - A library for enabling task-based multi-threading. It allows execution of task graphs with arbitrary dependencies.
+* [concurrencpp](https://github.com/David-Haim/concurrencpp) - Modern concurrency for C++. Tasks, executors, timers and C++20 coroutines to rule them all
