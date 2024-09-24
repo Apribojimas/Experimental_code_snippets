@@ -64,3 +64,4 @@
 * [concurrencpp](https://github.com/David-Haim/concurrencpp) - Modern concurrency for C++. Tasks, executors, timers and C++20 coroutines to rule them all
 * [TaskManager](https://github.com/Tastyep/TaskManager) - A C++14 Task Manager / Scheduler
 * [psched](https://github.com/p-ranav/psched) - Priority-based Task Scheduling for Modern C++
+* [ssTs](https://github.com/StefanoLusardi/task_scheduler) - Small & Simple Task Scheduler for C++17
