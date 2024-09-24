@@ -63,3 +63,4 @@
 * [Fiber Tasking Lib](https://github.com/RichieSams/FiberTaskingLib) - A library for enabling task-based multi-threading. It allows execution of task graphs with arbitrary dependencies.
 * [concurrencpp](https://github.com/David-Haim/concurrencpp) - Modern concurrency for C++. Tasks, executors, timers and C++20 coroutines to rule them all
 * [TaskManager](https://github.com/Tastyep/TaskManager) - A C++14 Task Manager / Scheduler
+* [psched](https://github.com/p-ranav/psched) - Priority-based Task Scheduling for Modern C++
