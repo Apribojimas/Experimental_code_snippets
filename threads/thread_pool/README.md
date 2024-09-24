@@ -55,7 +55,8 @@
 * [mango](https://github.com/tksuoran/erhe/blob/main/src/mango/include/mango/core/thread.hpp) - The tasks have no dependency to each other and can be executed in any order.
 * [koios](https://github.com/JPewterschmidt/koios) - A C++ coroutine library
 * [1261385937](https://github.com/1261385937/thread_pool) - very high performance, lock free, roundRobin dispatching, steal available
-* [Scheduling](https://github.com/dpuyda/scheduling/blob/main/include/scheduling/scheduling.hpp) - A simple and fast library allowing to run async tasks and execute task graphs.
+* [task-thread-pool](https://github.com/alugowski/task-thread-pool/blob/main/include/task_thread_pool.hpp) - Fast and lightweight thread pool for C++11 and newer.
+* 
 ## Libs
 * [Senders - A Standard Model for Asynchronous Execution in C++](https://github.com/NVIDIA/stdexec) - `std::execution`, the proposed C++ framework for asynchronous and parallel programming.
 * [reactor](https://github.com/fantasy-peak/reactor) - C++17 and reactor mode task/timer executor
@@ -68,3 +69,5 @@
 * [ssTs](https://github.com/StefanoLusardi/task_scheduler) - Small & Simple Task Scheduler for C++17
 * [SuperGlue](https://github.com/tillenius/superglue) - SuperGlue -- A C++ Library for Data-Dependency Driven Task Parallelism
 * [Taskflow](https://github.com/taskflow/taskflow) - A General-purpose Task-parallel Programming System using Modern C++
+* [poolSTL](https://github.com/alugowski/poolSTL) - Light and self-contained implementation of C++17 parallel algorithms.
+* [workspace](https://github.com/CodingHanYa/workspace) - workspace is a lightweight asynchronous execution framework based on C++11, which supports: asynchronous concurrent
