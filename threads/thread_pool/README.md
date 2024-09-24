@@ -67,3 +67,4 @@
 * [psched](https://github.com/p-ranav/psched) - Priority-based Task Scheduling for Modern C++
 * [ssTs](https://github.com/StefanoLusardi/task_scheduler) - Small & Simple Task Scheduler for C++17
 * [SuperGlue](https://github.com/tillenius/superglue) - SuperGlue -- A C++ Library for Data-Dependency Driven Task Parallelism
+* [Taskflow](https://github.com/taskflow/taskflow) - A General-purpose Task-parallel Programming System using Modern C++
