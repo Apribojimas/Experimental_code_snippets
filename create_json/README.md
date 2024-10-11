@@ -8,6 +8,7 @@ auto j = json(
 Must be oriented to embedded development. Small ROM size overhead!
 
 # Source of ideas
+* [A simple wrapper around](https://github.com/DenSinH/json/blob/master/main.cpp) - A simple JSON loader / dumper
 * [template_remover.hpp](https://github.com/fcpp/androidDemoApp/blob/master/fcpp-android/lib/common/template_remover.hpp) - to_json
 * [variant.hpp](https://github.com/malasiot/cvx/blob/master/include/cvx/misc/variant.hpp#L305) - variant with tojson
 * [function.cpp](https://github.com/AidenSwayne/QuickFunctions/blob/main/c_plus_plus/json_encoder/function.cpp) - function json encoder
