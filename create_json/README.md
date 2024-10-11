@@ -25,3 +25,4 @@ Must be oriented to embedded development. Small ROM size overhead!
 * [Value.h](https://github.com/zoltan-hadur/Cpp-OpenGL-GUI/blob/master/Json4CPP/Value.h) - std::variant<std::nullptr_t, std::wstring, bool, double, int64_t, JsonObject, JsonArray, Args...>;
 * [cfdcore_json_writer.h](https://github.com/p2pderivatives/cfd-core/blob/master/include/cfdcore/cfdcore_json_writer.h) - Json builder
 * [json20](https://github.com/ondra-novak/json20) - JSON support for C++20 / constexpr
+* [cpp-json](https://github.com/eteran/cpp-json/blob/master/lib/include/cpp-json/json_encode.h) - A fast & modern C++17 JSON library
