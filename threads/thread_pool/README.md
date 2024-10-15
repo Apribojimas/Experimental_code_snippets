@@ -23,6 +23,7 @@
 
 ## Sources of ideas
 * [Scheduling](https://github.com/dpuyda/scheduling/blob/main/include/scheduling/scheduling.hpp) - A simple and fast library allowing to run async tasks and execute task graphs.
+* [nmcclatchey](https://github.com/nmcclatchey/ThreadPool) - Portable (C++11) low-overhead concurrent task scheduling for fine-grained concurrency.
 * [muduo](https://github.com/chenshuo/muduo) - Event-driven network library for multi-threaded Linux server in C++11
     - [WeakCallback](https://github.com/chenshuo/muduo/blob/master/muduo/base/WeakCallback.h) - 
 * [ThreadPool](https://github.com/progschj/ThreadPool), [C++ Thread Pool](https://github.com/f-squirrel/thread_pool), [threadpool.hpp](https://github.com/leiless/threadpool.hpp), [ThreadPoolC++11](https://github.com/xingyuuchen/ThreadPool), [intelRSD](https://github.com/intel/intelRSD/blob/master/PSME/common/agent-framework/include/agent-framework/threading/threadpool.hpp) - A simple C++11 Thread Pool implementation
