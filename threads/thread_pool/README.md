@@ -59,6 +59,7 @@
 * [task-thread-pool](https://github.com/alugowski/task-thread-pool/blob/main/include/task_thread_pool.hpp) - Fast and lightweight thread pool for C++11 and newer.
 * [C++ Timeouts](https://github.com/eglimi/cpptime/blob/master/cpptime.h) - A portable, pure C++11 timer component.
 * [rabbit hole](https://github.com/lukasino1214/graphics-programming-rabbit-hole/blob/master/src/threadpool.hpp) - rabbit hole
+* [muu](https://github.com/marzer/muu/blob/master/include/muu/thread_pool.h) - stateless vs state callbacks
 ## Libs
 * [Senders - A Standard Model for Asynchronous Execution in C++](https://github.com/NVIDIA/stdexec) - `std::execution`, the proposed C++ framework for asynchronous and parallel programming.
 * [reactor](https://github.com/fantasy-peak/reactor) - C++17 and reactor mode task/timer executor
