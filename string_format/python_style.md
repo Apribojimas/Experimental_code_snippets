@@ -11,3 +11,4 @@
 * https://github.com/arajar/format/blob/master/Format.h
 * https://github.com/hun1er/stringpy/blob/main/include/stringpy/format.hpp
 * https://github.com/IohannRabeson/rescom/blob/main/sources/StringHelpers.hpp
+* https://github.com/liameno/str/blob/master/str_impl.h
