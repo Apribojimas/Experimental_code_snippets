@@ -28,3 +28,4 @@ Must be oriented to embedded development. Small ROM size overhead!
 * [json20](https://github.com/ondra-novak/json20) - JSON support for C++20 / constexpr
 * [cpp-json](https://github.com/eteran/cpp-json/blob/master/lib/include/cpp-json/json_encode.h) - A fast & modern C++17 JSON library
 * [stdxx-json](https://github.com/JeneLitsch/stdxx/tree/master/stdxx/json) - Another implementation
+* [psibase](https://github.com/gofractally/psibase/blob/main/libraries/psio/include/psio/to_json.hpp) - various to_json implementations
