@@ -12,3 +12,6 @@
 * https://github.com/hun1er/stringpy/blob/main/include/stringpy/format.hpp
 * https://github.com/IohannRabeson/rescom/blob/main/sources/StringHelpers.hpp
 * https://github.com/liameno/str/blob/master/str_impl.h
+
+# Format parser
+* https://github.com/r-lyeh-archived/fmt11/blob/master/fmt11.hpp
