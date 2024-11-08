@@ -15,3 +15,4 @@
 
 # Format parser
 * https://github.com/r-lyeh-archived/fmt11/blob/master/fmt11.hpp
+* https://github.com/walterdejong/format/blob/master/format.h
