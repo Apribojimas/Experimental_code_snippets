@@ -3,3 +3,4 @@
 * https://github.com/zhllxt/asio2/blob/main/include/asio2/util/string.hpp
 * https://github.com/ericclappier-eaton/fty-utils/blob/master/fty/convert.h
 * https://github.com/lairworks/nas2d-core/blob/main/NAS2D/StringUtils.h
+* https://github.com/kylewu11/ClickHouse/blob/master/base/ext/chrono_io.h -  chrono values to string
