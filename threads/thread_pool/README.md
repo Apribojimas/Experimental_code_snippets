@@ -76,3 +76,4 @@
 * [workspace](https://github.com/CodingHanYa/workspace) - workspace is a lightweight asynchronous execution framework based on C++11, which supports: asynchronous concurrent
 * [antoniocoratelli](https://github.com/antoniocoratelli/thread-pool/blob/main/library/include/aco/thread_pool.hpp) - A minimalist implementation of a C++17 thread-pool-based task scheduler with task-stealing, in around 200 lines of header-only code with no external dependencies.
 * [SimpleThreadPools](https://github.com/ShinuziKyura/SimpleThreadPools) - intresting task&pack approach
+* [task-thread-pool](https://github.com/alugowski/task-thread-pool) - Fast and lightweight thread pool for C++11 and newer.
