@@ -81,3 +81,4 @@
 * [Beehive](https://github.com/egranata/beehive) - A C++ thread pool manager
 * [Multithreading_Cpp](https://github.com/trololo23/Multithreading_Cpp) - Executors and other Structures
 * [static_process_pool](https://github.com/jaredhoberock/static_process_pool) - A std::static_thread_pool-alike for processes.
+* [ThrottlingThreadPool](https://github.com/LoganEvans/ThrottlingThreadPool) - A C++ threadpool library that uses fair resource allocation for all attached executors.
