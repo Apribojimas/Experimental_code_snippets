@@ -80,3 +80,4 @@
 * [Thread System Project](https://github.com/kcenon/thread_system) - A modern C++ threading framework offering robust thread management via thread_base class, real-time multi-threaded logging system, thread pool with priority queue support, compatibility with std::jthread (C++20) and std::thread, and comprehensive error handling mechanisms.
 * [Beehive](https://github.com/egranata/beehive) - A C++ thread pool manager
 * [Multithreading_Cpp](https://github.com/trololo23/Multithreading_Cpp) - Executors and other Structures
+* [static_process_pool](https://github.com/jaredhoberock/static_process_pool) - A std::static_thread_pool-alike for processes.
