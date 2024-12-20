@@ -85,3 +85,4 @@
 * [Tiny Stackless Coroutine in C++14](https://github.com/crazybie/co) - a tiny, portable, stackless coroutine in C++11
 * [Concurrent](https://github.com/xerotolerance/Concurrent) - High-level Multithreading & Concurrency Tools written in C++17
 * [MAN](https://github.com/qnope/MAN) - Man is Thread Pool in C++17
+* [Intel Game Task Scheduler (GTS)](https://github.com/yazici/GTS-GamesTaskScheduler) - A task scheduling framework designed for the needs of game developers.
