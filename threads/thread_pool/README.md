@@ -86,3 +86,4 @@
 * [Concurrent](https://github.com/xerotolerance/Concurrent) - High-level Multithreading & Concurrency Tools written in C++17
 * [MAN](https://github.com/qnope/MAN) - Man is Thread Pool in C++17
 * [Intel Game Task Scheduler (GTS)](https://github.com/yazici/GTS-GamesTaskScheduler) - A task scheduling framework designed for the needs of game developers.
+* [C++ Async Toolkit](https://github.com/WAcry/cpp_async_toolkit) - A modern C++ high-performance asynchronous stream processing and concurrency toolkit
