@@ -29,3 +29,4 @@ Must be oriented to embedded development. Small ROM size overhead!
 * [cpp-json](https://github.com/eteran/cpp-json/blob/master/lib/include/cpp-json/json_encode.h) - A fast & modern C++17 JSON library
 * [stdxx-json](https://github.com/JeneLitsch/stdxx/tree/master/stdxx/json) - Another implementation
 * [psibase](https://github.com/gofractally/psibase/blob/main/libraries/psio/include/psio/to_json.hpp) - various to_json implementations
+* [Safe JSON](https://github.com/ZY4N/Safe-JSON) - A JSON library made for config files.
