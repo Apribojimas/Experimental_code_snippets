@@ -30,3 +30,4 @@ Must be oriented to embedded development. Small ROM size overhead!
 * [stdxx-json](https://github.com/JeneLitsch/stdxx/tree/master/stdxx/json) - Another implementation
 * [psibase](https://github.com/gofractally/psibase/blob/main/libraries/psio/include/psio/to_json.hpp) - various to_json implementations
 * [Safe JSON](https://github.com/ZY4N/Safe-JSON) - A JSON library made for config files.
+* [basic_value.hpp](https://github.com/taocpp/json/blob/main/include/tao/json/basic_value.hpp) - variant json value
