@@ -33,3 +33,4 @@ Almost [NEAT JSON BUILDER for RAPIDJSON](https://github.com/crea7or/rapid-builde
 * [psibase](https://github.com/gofractally/psibase/blob/main/libraries/psio/include/psio/to_json.hpp) - various to_json implementations
 * [Safe JSON](https://github.com/ZY4N/Safe-JSON) - A JSON library made for config files.
 * [basic_value.hpp](https://github.com/taocpp/json/blob/main/include/tao/json/basic_value.hpp) - variant json value
+* [Tiny-JSON](https://github.com/Syan-Lin/Tiny-JSON/blob/main/examples.cpp) - have example
