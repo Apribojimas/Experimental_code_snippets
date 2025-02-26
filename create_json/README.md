@@ -7,6 +7,8 @@ auto j = json(
 
 Must be oriented to embedded development. Small ROM size overhead!
 
+Almost [NEAT JSON BUILDER for RAPIDJSON](https://github.com/crea7or/rapid-builder) - Neat JSON builder for rapidjson library that is based on std::initializer_list. Don't support temporary variables!!!
+
 # Source of ideas
 * [JSON Utilities](https://github.com/TimSevereijns/JSON-Utilities) - A series of functions that wrap the rapidjson library to enable easier serialization and deserialization. !!!
 * [BlockTheSpot](https://github.com/mrpond/BlockTheSpot/blob/master/src/BasicUtils/Json.h) - Json value with initializer_list
