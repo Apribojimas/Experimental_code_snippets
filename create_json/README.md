@@ -34,3 +34,4 @@ Almost [NEAT JSON BUILDER for RAPIDJSON](https://github.com/crea7or/rapid-builde
 * [Safe JSON](https://github.com/ZY4N/Safe-JSON) - A JSON library made for config files.
 * [basic_value.hpp](https://github.com/taocpp/json/blob/main/include/tao/json/basic_value.hpp) - variant json value
 * [Tiny-JSON](https://github.com/Syan-Lin/Tiny-JSON/blob/main/examples.cpp) - have example
+* [basic_json](https://github.com/KaixoCode/basic_json) - Simple JSON library with parser that also supports HJSON.
