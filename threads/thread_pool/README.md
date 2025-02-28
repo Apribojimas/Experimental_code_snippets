@@ -88,4 +88,5 @@
 * [Intel Game Task Scheduler (GTS)](https://github.com/yazici/GTS-GamesTaskScheduler) - A task scheduling framework designed for the needs of game developers.
 * [C++ Async Toolkit](https://github.com/WAcry/cpp_async_toolkit) - A modern C++ high-performance asynchronous stream processing and concurrency toolkit
 * [small_tools](https://github.com/QinZiwen/small_tools) - A collection of gadgets accumulated in work and study, the functions may be varied, strange.
-* [coral_task_manager](https://github.com/trihfan/coral_task_manager) - 
+* [coral_task_manager](https://github.com/trihfan/coral_task_manager) -
+* [task-thread-pool](https://github.com/alugowski/task-thread-pool) - Fast and lightweight thread pool for C++11 and newer.
