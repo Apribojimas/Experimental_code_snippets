@@ -1,19 +1,11 @@
 
- template <class _Rep, class _Period>
-    datetime& operator-= (std::chrono::duration<_Rep, _Period> duration)
-    {
-        (*this) -= timespan(duration);
-        return *this;
-    }
-    
-    
-      inline std::string duration_to_string(std::chrono::steady_clock::duration duration)
-      {
-         auto minutes = std::chrono::duration_cast<std::chrono::minutes>(duration).count();
-         auto seconds = std::chrono::duration_cast<std::chrono::seconds>(duration).count() % 60;
-         auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() % 1000;
-         return std::format("{}m {}s {}ms", minutes, seconds, milliseconds);
-      }
+inline std::string duration_to_string(std::chrono::steady_clock::duration duration)
+{
+ auto minutes = std::chrono::duration_cast<std::chrono::minutes>(duration).count();
+ auto seconds = std::chrono::duration_cast<std::chrono::seconds>(duration).count() % 60;
+ auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() % 1000;
+ return std::format("{}m {}s {}ms", minutes, seconds, milliseconds);
+}
     
     
 std::string Utils::formatDuration(std::chrono::seconds diff)
