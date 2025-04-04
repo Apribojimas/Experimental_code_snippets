@@ -1,1 +1,1 @@
-* [](https://github.com/RafaGago/logger-bench) - Benchmark of different C or C++ loggers
+* [logger-bench](https://github.com/RafaGago/logger-bench) - Benchmark of different C or C++ loggers
