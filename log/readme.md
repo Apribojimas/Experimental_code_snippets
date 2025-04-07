@@ -9,4 +9,4 @@
 * [xtr](https://github.com/choll/xtr) - xtr bench
 * [WoodyLogger_Design](https://github.com/nasacj/WoodyLogger_Design) - wl vs nanolog bench
 * [cc_log_benchmark](https://github.com/MuggleWei/cc_log_benchmark) - c/c++ log benchmark
-* [loglib_benchmarks](https://github.com/denesderhan/loglib_benchmarks) - C++ logging library benchmarks.
+* [loglib_benchmarks](https://github.com/denesderhan/loglib_benchmarks) - C++ logging library benchmarks. [Graphs](https://denesderhan.github.io/logbench_results/)
