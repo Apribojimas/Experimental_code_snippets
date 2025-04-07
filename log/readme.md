@@ -8,3 +8,4 @@
 * [lwlog](https://github.com/ChristianPanov/lwlog) - lwlog bench
 * [xtr](https://github.com/choll/xtr) - xtr bench
 * [WoodyLogger_Design](https://github.com/nasacj/WoodyLogger_Design) - wl vs nanolog bench
+* [cc_log_benchmark](https://github.com/MuggleWei/cc_log_benchmark) - c/c++ log benchmark
