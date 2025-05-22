@@ -92,3 +92,4 @@
 * [coral_task_manager](https://github.com/trihfan/coral_task_manager) -
 * [task-thread-pool](https://github.com/alugowski/task-thread-pool) - Fast and lightweight thread pool for C++11 and newer.
 * [Scheduling](https://github.com/dpuyda/scheduling) - A simple and fast minimalistic header-only library allowing to run async tasks and execute task graphs.
+* [C++ Thread Pool](https://github.com/Razirp/ThreadPool) - A high-performance thread pool implementation in Modern C++ for executing tasks concurrently.|A high-performance thread pool implementation in Modern C++.
