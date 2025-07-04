@@ -6,3 +6,4 @@
 
 # various implementations
 * [Lithium](https://github.com/ElementAstro/Lithium/blob/master/src/atom/type/indestructible.hpp)
+* [ALSpec](https://github.com/mcj-group/ALSpec/blob/alspec/tt_stl/tt_stl/indestructible.hpp)
