@@ -3,3 +3,6 @@
 
 # 'new placement' approach
 * [libfork](https://github.com/ConorWilliams/libfork/blob/main/include/libfork/core/impl/manual_lifetime.hpp) - Manual lifetime
+
+# various implementations
+* [Lithium](https://github.com/ElementAstro/Lithium/blob/master/src/atom/type/indestructible.hpp)
