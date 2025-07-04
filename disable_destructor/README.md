@@ -7,3 +7,4 @@
 # various implementations
 * [Monnamogo](https://github.com/Monnamogolobyo/gapp-exp/blob/master/src/utility/indestructible.hpp) - template union
 * [ALSpec](https://github.com/mcj-group/ALSpec/blob/alspec/tt_stl/tt_stl/indestructible.hpp)
+* [folly](https://github.com/facebook/folly/blob/main/folly/Indestructible.h) - bloat compile process
