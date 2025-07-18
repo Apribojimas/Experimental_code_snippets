@@ -44,3 +44,13 @@ std::string join(const std::vector<std::string>& svec, const std::string& sepa) 
 
 	return value;
 }
+
+// std::next trick
+std::string join(const std::vector<std::string>& vec, const std::string& delim = ", ") {
+  if (vec.empty()) {
+    return std::string();
+  }
+
+  return std::accumulate(std::next(vec.begin()), vec.end(), vec[0],
+                         [&delim](const std::string& a, const std::string& b) { return a + delim + b; });
+}
