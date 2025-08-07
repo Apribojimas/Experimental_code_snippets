@@ -36,6 +36,8 @@ Almost [NEAT JSON BUILDER for RAPIDJSON](https://github.com/crea7or/rapid-builde
 * [basic_value.hpp](https://github.com/taocpp/json/blob/main/include/tao/json/basic_value.hpp) - variant json value
 * [Tiny-JSON](https://github.com/Syan-Lin/Tiny-JSON/blob/main/examples.cpp) - have example
 * [basic_json](https://github.com/KaixoCode/basic_json) - Simple JSON library with parser that also supports HJSON.
+* [taojson](https://github.com/taocpp/json/blob/main/doc/Value-Class.md) - doc and examples
+* [minjsoncpp](https://github.com/toughengineer/minjsoncpp) - support json construction variants
 
 # Serialization
 * [rapidjson_utils.h](https://github.com/valhalla/valhalla/blob/master/valhalla/baldr/rapidjson_utils.h) - This takes whatever data you want and serializes it directly to a json string rather than keeping it organized as json in an in memory object.
