@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+  <!--
+    Flag constants from document.h (for reference):
+      kBoolFlag      = 0x0008   kNumberFlag = 0x0010   kIntFlag    = 0x0020
+      kUintFlag      = 0x0040   kInt64Flag  = 0x0080   kUint64Flag = 0x0100
+      kDoubleFlag    = 0x0200   kStringFlag = 0x0400   kCopyFlag   = 0x0800
+      kInlineStrFlag = 0x1000
+
+      kNullFlag        = 0x0000   (kNullType  = 0)
+      kTrueFlag        = 0x000A   (kTrueType  2 | kBoolFlag 8)
+      kFalseFlag       = 0x0009   (kFalseType 1 | kBoolFlag 8)
+      kObjectFlag      = 0x0003   (kObjectType = 3)
+      kArrayFlag       = 0x0004   (kArrayType  = 4)
+      kConstStringFlag = 0x0405   (kStringType 5 | kStringFlag)
+      kCopyStringFlag  = 0x0C05   (kStringType 5 | kStringFlag | kCopyFlag)
+      kShortStringFlag = 0x1C05   (kStringType 5 | kStringFlag | kCopyFlag | kInlineStrFlag)
+
+    IMPORTANT - RAPIDJSON_48BITPOINTER_OPTIMIZATION (enabled by default on x86-64):
+      The upper 16 bits of every stored pointer in GenericValue's Data union (s.str,
+      o.members, a.elements) hold the type flags.  All pointer expressions must be
+      masked with  & 0x0000FFFFFFFFFFFF  before use, exactly like data_.s.str already
+      was. Token::name and GenericPointer::tokens_ are regular heap pointers and do
+      NOT need this masking.
+  -->
+
+  <!-- =========================================================
+       RapidJSON: GenericValue - Enhanced with readable JSON display
+       ========================================================= -->
+  <Type Name="rapidjson::GenericValue&lt;*,*&gt;" Inheritable="true">
+
+    <!-- NULL -->
+    <DisplayString Condition="(data_.f.flags == 0x0000)">null</DisplayString>
+
+    <!-- BOOL: kTrueFlag=0x000A, kFalseFlag=0x0009 -->
+    <DisplayString Condition="(data_.f.flags == 0x000A)">true</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x0009)">false</DisplayString>
+
+    <!-- SHORT STRING (SSO): kInlineStrFlag=0x1000 must be checked before kStringFlag=0x0400 -->
+    <DisplayString Condition="(data_.f.flags &amp; 0x1000) != 0">"{(const Ch*)data_.ss.str, na}"</DisplayString>
+
+    <!-- NORMAL STRING: kStringFlag=0x0400 (const or heap-allocated) -->
+    <DisplayString Condition="(data_.f.flags &amp; 0x0400) != 0">"{(const Ch*)((size_t)data_.s.str &amp; 0x0000FFFFFFFFFFFF), [data_.s.length] na}"</DisplayString>
+
+    <!-- NUMBERS: check most-specific flag first so int32 beats int64 beats double etc.
+         kIntFlag=0x0020, kUintFlag=0x0040, kInt64Flag=0x0080, kUint64Flag=0x0100, kDoubleFlag=0x0200 -->
+    <DisplayString Condition="(data_.f.flags &amp; 0x0020) != 0">{data_.n.i.i,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0040) != 0">{data_.n.u.u,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0080) != 0">{data_.n.i64,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0100) != 0">{data_.n.u64,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0200) != 0">{data_.n.d}</DisplayString>
+
+    <!-- OBJECT / ARRAY -->
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 3)">{{ {data_.o.size} members }}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 4)">[{data_.a.size} items]</DisplayString>
+
+    <!-- Fallback: should never be reached with well-formed values -->
+    <DisplayString>JSON(flags={data_.f.flags,x})</DisplayString>
+
+    <Expand>
+      <!-- OBJECT: metadata + inline member expansion.
+           Mask data_.o.members with 0x0000FFFFFFFFFFFF because RAPIDJSON_48BITPOINTER_OPTIMIZATION
+           stores the type flags in the upper 16 bits of the pointer. -->
+      <Item Name="[type]" Condition="((data_.f.flags &amp; 0x0F) == 3)">Object</Item>
+      <Item Name="[member_count]" Condition="((data_.f.flags &amp; 0x0F) == 3)">data_.o.size</Item>
+      <Item Name="[capacity]" Condition="((data_.f.flags &amp; 0x0F) == 3)">data_.o.capacity</Item>
+      <ArrayItems Condition="((data_.f.flags &amp; 0x0F) == 3)">
+        <Size>data_.o.size</Size>
+        <ValuePointer>(rapidjson::GenericMember&lt;$T1,$T2&gt;*)((size_t)data_.o.members &amp; 0x0000FFFFFFFFFFFF)</ValuePointer>
+      </ArrayItems>
+
+      <!-- ARRAY: metadata + inline element expansion.
+           Same 48-bit pointer masking applies to data_.a.elements. -->
+      <Item Name="[type]" Condition="((data_.f.flags &amp; 0x0F) == 4)">Array</Item>
+      <Item Name="[item_count]" Condition="((data_.f.flags &amp; 0x0F) == 4)">data_.a.size</Item>
+      <Item Name="[capacity]" Condition="((data_.f.flags &amp; 0x0F) == 4)">data_.a.capacity</Item>
+      <IndexListItems Condition="((data_.f.flags &amp; 0x0F) == 4)">
+        <Size>data_.a.size</Size>
+        <ValueNode>((rapidjson::GenericValue&lt;$T1,$T2&gt;*)((size_t)data_.a.elements &amp; 0x0000FFFFFFFFFFFF))[$i]</ValueNode>
+      </IndexListItems>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: Value - Direct GenericValue usage
+       ========================================================= -->
+  <Type Name="rapidjson::Value" Inheritable="true">
+    <DisplayString Condition="(data_.f.flags == 0x0000)">null</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x000A)">true</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x0009)">false</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x1000) != 0">"{(const char*)data_.ss.str, na}"</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0400) != 0">"{(const char*)((size_t)data_.s.str &amp; 0x0000FFFFFFFFFFFF), [data_.s.length] na}"</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0020) != 0">{data_.n.i.i,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0040) != 0">{data_.n.u.u,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0080) != 0">{data_.n.i64,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0100) != 0">{data_.n.u64,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0200) != 0">{data_.n.d}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 3)">{{ {data_.o.size} members }}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 4)">[{data_.a.size} items]</DisplayString>
+    <DisplayString>JSON(flags={data_.f.flags,x})</DisplayString>
+    <Expand>
+      <!-- Delegate to GenericValue<*,*> to inherit the fixed ArrayItems/IndexListItems -->
+      <ExpandedItem>*(rapidjson::GenericValue&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::MemoryPoolAllocator&lt;rapidjson::CrtAllocator&gt; &gt;*)this</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: GenericDocument / Document - Enhanced
+       ========================================================= -->
+  <Type Name="rapidjson::GenericDocument&lt;*,*,*&gt;" Inheritable="true">
+    <DisplayString Condition="(data_.f.flags == 0x0000)">Document: null</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x000A)">Document: true</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x0009)">Document: false</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x1000) != 0">Document: "{(const char*)data_.ss.str, na}"</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0400) != 0">Document: "{(const char*)((size_t)data_.s.str &amp; 0x0000FFFFFFFFFFFF), [data_.s.length] na}"</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0020) != 0">Document: {data_.n.i.i,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0040) != 0">Document: {data_.n.u.u,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0080) != 0">Document: {data_.n.i64,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0100) != 0">Document: {data_.n.u64,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0200) != 0">Document: {data_.n.d}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 3)">Document: {{ {data_.o.size} members }}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 4)">Document: [{data_.a.size} items]</DisplayString>
+    <DisplayString>Document (flags={data_.f.flags,x})</DisplayString>
+    <Expand>
+      <!-- Parse status -->
+      <Item Name="[parse_success]">parseResult_.code_ == 0</Item>
+      <Item Name="[parse_error_code]">parseResult_.code_</Item>
+      <Item Name="[parse_error_offset]">parseResult_.offset_</Item>
+      <!-- Inline the GenericValue base so object members / array elements are visible
+           when Document appears as a field inside a nested struct or class -->
+      <ExpandedItem>*(rapidjson::GenericValue&lt;$T1,$T2&gt;*)this</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <Type Name="rapidjson::Document" Inheritable="true">
+    <DisplayString Condition="(data_.f.flags == 0x0000)">Document: null</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x000A)">Document: true</DisplayString>
+    <DisplayString Condition="(data_.f.flags == 0x0009)">Document: false</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x1000) != 0">Document: "{(const char*)data_.ss.str, na}"</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0400) != 0">Document: "{(const char*)((size_t)data_.s.str &amp; 0x0000FFFFFFFFFFFF), [data_.s.length] na}"</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0020) != 0">Document: {data_.n.i.i,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0040) != 0">Document: {data_.n.u.u,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0080) != 0">Document: {data_.n.i64,d}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0100) != 0">Document: {data_.n.u64,u}</DisplayString>
+    <DisplayString Condition="(data_.f.flags &amp; 0x0200) != 0">Document: {data_.n.d}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 3)">Document: {{ {data_.o.size} members }}</DisplayString>
+    <DisplayString Condition="((data_.f.flags &amp; 0x0F) == 4)">Document: [{data_.a.size} items]</DisplayString>
+    <DisplayString>Document (flags={data_.f.flags,x})</DisplayString>
+    <Expand>
+      <!-- Parse status -->
+      <Item Name="[parse_success]">parseResult_.code_ == 0</Item>
+      <Item Name="[parse_error_code]">parseResult_.code_</Item>
+      <Item Name="[parse_error_offset]">parseResult_.offset_</Item>
+      <!-- Inline the GenericValue base so object members / array elements are visible
+           when Document appears as a field inside a nested struct or class -->
+      <ExpandedItem>*(rapidjson::GenericValue&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::MemoryPoolAllocator&lt;rapidjson::CrtAllocator&gt; &gt;*)this</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: GenericMember - Key/Value pairs with context
+       ========================================================= -->
+  <Type Name="rapidjson::GenericMember&lt;*,*&gt;">
+    <!-- Key as short string (kInlineStrFlag=0x1000) -->
+    <DisplayString Condition="(name.data_.f.flags &amp; 0x1000) != 0">
+      "{(const char*)name.data_.ss.str, na}": {value}
+    </DisplayString>
+
+    <!-- Key as heap/const string (kStringFlag=0x0400, not inline) -->
+    <DisplayString Condition="(name.data_.f.flags &amp; 0x0400) != 0">
+      "{(const char*)((size_t)name.data_.s.str &amp; 0x0000FFFFFFFFFFFF), [name.data_.s.length] na}": {value}
+    </DisplayString>
+
+    <!-- Fallback -->
+    <DisplayString>"{name}": {value}</DisplayString>
+
+    <Expand>
+      <Item Name="key">name</Item>
+      <Item Name="value">value</Item>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: GenericPointer::Token - individual path component
+       kPointerInvalidIndex = 0xFFFFFFFF means property name, not array index.
+       Token::name is a plain heap pointer (no 48-bit masking required).
+       Each token shows its own segment prefixed with "/" so the expanded list
+       reads as individual path components.
+       ========================================================= -->
+  <Type Name="rapidjson::GenericPointer&lt;*,*&gt;::Token">
+    <!-- Array index token: show /[N] to distinguish from a property named "N" -->
+    <DisplayString Condition="index != 0xFFFFFFFF">/[{index,u}]</DisplayString>
+    <!-- Property name token: show /name -->
+    <DisplayString>/{name, [length] na}</DisplayString>
+    <Expand>
+      <Item Name="name"  Condition="index == 0xFFFFFFFF">name, [length] na</Item>
+      <Item Name="index" Condition="index != 0xFFFFFFFF">index</Item>
+      <Item Name="length">length</Item>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: GenericPointer - JSON Pointer (RFC 6901)
+       tokens_ is a regular heap pointer; no 48-bit masking needed.
+
+       DisplayString is unrolled for depths 1-8 so the full path is visible
+       without expanding the node.  Paths deeper than 8 show first/last with
+       "..." in between.  tokens_[i].name always holds the decoded string for
+       both property-name and array-index tokens, so the same format works for
+       both.  The [length] specifier bypasses null-termination so that embedded
+       separators can never cut the display short.
+       ========================================================= -->
+  <Type Name="rapidjson::GenericPointer&lt;*,*&gt;">
+    <DisplayString Condition="parseErrorCode_ != 0">Pointer (parse error at offset {parseErrorOffset_})</DisplayString>
+    <DisplayString Condition="tokenCount_ == 0">/</DisplayString>
+    <DisplayString Condition="tokenCount_ == 1">/{tokens_[0].name, [tokens_[0].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 2">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 3">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 4">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 5">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 6">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}/{tokens_[5].name, [tokens_[5].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 7">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}/{tokens_[5].name, [tokens_[5].length] na}/{tokens_[6].name, [tokens_[6].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 8">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}/{tokens_[5].name, [tokens_[5].length] na}/{tokens_[6].name, [tokens_[6].length] na}/{tokens_[7].name, [tokens_[7].length] na}</DisplayString>
+    <!-- Deep path (>8 tokens): show first two and last -->
+    <DisplayString>/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/.../{tokens_[tokenCount_-1].name, [tokens_[tokenCount_-1].length] na}</DisplayString>
+    <Expand>
+      <Item Name="[valid]">parseErrorCode_ == 0</Item>
+      <Item Name="[parse_error_code]"  Condition="parseErrorCode_ != 0">parseErrorCode_</Item>
+      <Item Name="[parse_error_offset]" Condition="parseErrorCode_ != 0">parseErrorOffset_</Item>
+      <Item Name="[token_count]">tokenCount_</Item>
+      <ArrayItems>
+        <Size>tokenCount_</Size>
+        <ValuePointer>tokens_</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: Pointer (concrete typedef for GenericPointer<Value>)
+       Cannot use ExpandedItem with wildcard casts in natvis expressions,
+       so the full path display is duplicated here.
+       ========================================================= -->
+  <Type Name="rapidjson::Pointer">
+    <DisplayString Condition="parseErrorCode_ != 0">Pointer (parse error at offset {parseErrorOffset_})</DisplayString>
+    <DisplayString Condition="tokenCount_ == 0">/</DisplayString>
+    <DisplayString Condition="tokenCount_ == 1">/{tokens_[0].name, [tokens_[0].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 2">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 3">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 4">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 5">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 6">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}/{tokens_[5].name, [tokens_[5].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 7">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}/{tokens_[5].name, [tokens_[5].length] na}/{tokens_[6].name, [tokens_[6].length] na}</DisplayString>
+    <DisplayString Condition="tokenCount_ == 8">/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/{tokens_[2].name, [tokens_[2].length] na}/{tokens_[3].name, [tokens_[3].length] na}/{tokens_[4].name, [tokens_[4].length] na}/{tokens_[5].name, [tokens_[5].length] na}/{tokens_[6].name, [tokens_[6].length] na}/{tokens_[7].name, [tokens_[7].length] na}</DisplayString>
+    <DisplayString>/{tokens_[0].name, [tokens_[0].length] na}/{tokens_[1].name, [tokens_[1].length] na}/.../{tokens_[tokenCount_-1].name, [tokens_[tokenCount_-1].length] na}</DisplayString>
+    <Expand>
+      <Item Name="[valid]">parseErrorCode_ == 0</Item>
+      <Item Name="[parse_error_code]"  Condition="parseErrorCode_ != 0">parseErrorCode_</Item>
+      <Item Name="[parse_error_offset]" Condition="parseErrorCode_ != 0">parseErrorOffset_</Item>
+      <Item Name="[token_count]">tokenCount_</Item>
+      <ArrayItems>
+        <Size>tokenCount_</Size>
+        <ValuePointer>tokens_</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: internal::Stack
+       stack_ = raw buffer begin, stackTop_ = first unused byte, stackEnd_ = buffer end.
+       ========================================================= -->
+  <Type Name="rapidjson::internal::Stack&lt;*&gt;">
+    <DisplayString>Stack (size={(size_t)(stackTop_ - stack_)}, capacity={(size_t)(stackEnd_ - stack_)})</DisplayString>
+    <Expand>
+      <Item Name="[size]">(size_t)(stackTop_ - stack_)</Item>
+      <Item Name="[capacity]">(size_t)(stackEnd_ - stack_)</Item>
+      <Item Name="[buffer]">(const char*)stack_</Item>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: GenericStringBuffer / StringBuffer
+       The underlying buffer lives in stack_.stack_ (the raw char* inside
+       rapidjson::internal::Stack).  The previously used "size_" member
+       does not exist; size is derived from stack pointer arithmetic.
+       ========================================================= -->
+  <Type Name="rapidjson::GenericStringBuffer&lt;*,*&gt;">
+    <DisplayString>"{(const char*)stack_.stack_, [(size_t)(stack_.stackTop_ - stack_.stack_)] na}"</DisplayString>
+    <Expand>
+      <Item Name="[size]">(size_t)(stack_.stackTop_ - stack_.stack_)</Item>
+      <Item Name="[capacity]">(size_t)(stack_.stackEnd_ - stack_.stack_)</Item>
+      <Item Name="[buffer]">(const char*)stack_.stack_</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="rapidjson::StringBuffer">
+    <DisplayString>"{(const char*)stack_.stack_, [(size_t)(stack_.stackTop_ - stack_.stack_)] na}"</DisplayString>
+    <Expand>
+      <Item Name="[size]">(size_t)(stack_.stackTop_ - stack_.stack_)</Item>
+      <Item Name="[capacity]">(size_t)(stack_.stackEnd_ - stack_.stack_)</Item>
+      <Item Name="[buffer]">(const char*)stack_.stack_</Item>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: Writer::Level - one entry per currently-open container.
+       Pushed by StartObject/StartArray, popped by EndObject/EndArray.
+       Layout on MSVC x64: size_t valueCount (8 B, offset 0) + bool inArray (1 B, offset 8) + 7 B pad = 16 B.
+       ========================================================= -->
+  <Type Name="rapidjson::Writer&lt;*,*,*,*,*&gt;::Level">
+    <DisplayString Condition="inArray">Array ({valueCount} items written)</DisplayString>
+    <DisplayString Condition="!inArray &amp;&amp; (valueCount % 2) == 0">Object ({valueCount / 2} pairs)</DisplayString>
+    <DisplayString Condition="!inArray &amp;&amp; (valueCount % 2) != 0">Object ({valueCount / 2} pairs, key pending)</DisplayString>
+    <Expand>
+      <Item Name="[in_array]">inArray</Item>
+      <Item Name="[values_written]">valueCount</Item>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: Writer<GenericStringBuffer<*,*>, ...>
+       Matches any Writer whose output stream is a StringBuffer.
+
+       View 1 - JSON string:
+         DisplayString / [json] item show the exact bytes in the buffer.
+         The [length] na format bypasses null-termination (StringBuffer is NOT
+         null-terminated until GetString() is called).
+
+       View 2 - open nesting hierarchy:
+         Writer is a streaming serialiser and stores NO DOM. The only
+         structural state is level_stack_: one Level per currently-open
+         StartObject/StartArray call that has not yet been closed.
+         Closed containers no longer appear here - they are already in [json].
+       ========================================================= -->
+  <Type Name="rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;*,*&gt;,*,*,*,*&gt;">
+    <DisplayString>"{(const char*)os_->stack_.stack_, [(size_t)(os_->stack_.stackTop_ - os_->stack_.stack_)] na}"</DisplayString>
+    <Expand>
+      <Item Name="[json]">(const char*)os_->stack_.stack_, [(size_t)(os_->stack_.stackTop_ - os_->stack_.stack_)] na</Item>
+      <Item Name="[complete]">hasRoot_ &amp;&amp; level_stack_.stackTop_ == level_stack_.stack_</Item>
+      <Item Name="[open_depth]">(size_t)(level_stack_.stackTop_ - level_stack_.stack_) / sizeof(rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;$T1,$T2&gt;,$T3,$T4,$T5,$T6&gt;::Level)</Item>
+      <CustomListItems Condition="level_stack_.stackTop_ != level_stack_.stack_">
+        <Variable Name="lvl"    InitialValue="(rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;$T1,$T2&gt;,$T3,$T4,$T5,$T6&gt;::Level*)level_stack_.stack_"/>
+        <Variable Name="lvlEnd" InitialValue="(rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;$T1,$T2&gt;,$T3,$T4,$T5,$T6&gt;::Level*)level_stack_.stackTop_"/>
+        <Variable Name="i"      InitialValue="0"/>
+        <Loop Condition="lvl != lvlEnd">
+          <Item Name="[{i}]">*lvl</Item>
+          <Exec>lvl++</Exec>
+          <Exec>i++</Exec>
+        </Loop>
+      </CustomListItems>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       json_support::Writer
+       Members: string_buffer_ (StringBuffer), stream_writer_ (JSONStreamWriter),
+                value_type_ (rapidjson::Type).
+       JSONStreamWriter = rapidjson::Writer<GenericStringBuffer<UTF8<char>,CrtAllocator>,
+                                            UTF8<char>, UTF8<char>, CrtAllocator, 0>
+
+       View 1 - JSON string:  DisplayString + [json] item from string_buffer_.
+       View 2 - open nesting: stream_writer_.level_stack_ Level objects,
+                               outermost first (index 0) to innermost.
+       ========================================================= -->
+  <Type Name="json_support::Writer">
+    <DisplayString>"{(const char*)string_buffer_.stack_.stack_, [(size_t)(string_buffer_.stack_.stackTop_ - string_buffer_.stack_.stack_)] na}"</DisplayString>
+    <Expand>
+      <Item Name="[json]">(const char*)string_buffer_.stack_.stack_, [(size_t)(string_buffer_.stack_.stackTop_ - string_buffer_.stack_.stack_)] na</Item>
+      <Item Name="[complete]">stream_writer_.hasRoot_ &amp;&amp; stream_writer_.level_stack_.stackTop_ == stream_writer_.level_stack_.stack_</Item>
+      <Item Name="[open_depth]">(size_t)(stream_writer_.level_stack_.stackTop_ - stream_writer_.level_stack_.stack_) / sizeof(rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator,0&gt;::Level)</Item>
+      <Item Name="[value_type]">value_type_</Item>
+      <CustomListItems Condition="stream_writer_.level_stack_.stackTop_ != stream_writer_.level_stack_.stack_">
+        <Variable Name="lvl"    InitialValue="(rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator,0&gt;::Level*)stream_writer_.level_stack_.stack_"/>
+        <Variable Name="lvlEnd" InitialValue="(rapidjson::Writer&lt;rapidjson::GenericStringBuffer&lt;rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::UTF8&lt;char&gt;,rapidjson::CrtAllocator,0&gt;::Level*)stream_writer_.level_stack_.stackTop_"/>
+        <Variable Name="i"      InitialValue="0"/>
+        <Loop Condition="lvl != lvlEnd">
+          <Item Name="[{i}]">*lvl</Item>
+          <Exec>lvl++</Exec>
+          <Exec>i++</Exec>
+        </Loop>
+      </CustomListItems>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: MemoryPoolAllocator
+       ========================================================= -->
+  <Type Name="rapidjson::MemoryPoolAllocator&lt;*&gt;">
+    <DisplayString>MemoryPoolAllocator (capacity={chunk_capacity_})</DisplayString>
+    <Expand>
+      <Item Name="[chunk_capacity]">chunk_capacity_</Item>
+    </Expand>
+  </Type>
+
+  <!-- =========================================================
+       RapidJSON: ParseResult
+       ========================================================= -->
+  <Type Name="rapidjson::ParseResult">
+    <DisplayString Condition="code_ == 0">Success (offset: {offset_})</DisplayString>
+    <DisplayString>Error (code: {code_}, offset: {offset_})</DisplayString>
+    <Expand>
+      <Item Name="[code]">code_</Item>
+      <Item Name="[offset]">offset_</Item>
+    </Expand>
+  </Type>
+
+</AutoVisualizer>
