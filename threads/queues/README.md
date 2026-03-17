@@ -10,6 +10,7 @@
 * https://github.com/OrhanKupusoglu/concurrent-queue/blob/main/include/concurrent_queue.h
 * https://github.com/mguludag/shared_memory/blob/main/shared_memory.hpp
 * https://github.com/andreiavrammsd/cpp-channel
+* https://github.com/RedFox20/ReCpp/blob/master/src/rpp/concurrent_queue.h
 
 # SPSC
 * https://github.com/rigtorp/SPSCQueue/blob/master/include/rigtorp/SPSCQueue.h
