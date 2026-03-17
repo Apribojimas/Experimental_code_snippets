@@ -1,6 +1,6 @@
 Thread safe queue
 https://github.com/SFTtech/openage/blob/master/libopenage/datastructure/concurrent_queue.h
-+ https://github.com/Octopus773/Babel/blob/main/Common/Utilities/TSQueue.hpp
+https://github.com/Octopus773/Babel/blob/main/Common/Utilities/TSQueue.hpp
 https://github.com/wrkzcoin/wrkzcoin/blob/development/src/utilities/ThreadSafeQueue.h
 https://github.com/FairyDevicesRD/libmimiio/blob/master/examples/include/BlockingDeque.h
 
@@ -25,7 +25,7 @@ https://github.com/islero/HTF-Nano-Tick/blob/master/include/core/SPSCQueue.hpp
 https://github.com/paulhuggett/spsc_queue/blob/master/spsc_queue.hpp
 https://github.com/gwrxuk/HFTPerformance/blob/main/src/core/lockfree_queue.hpp  indestructor/intrinsic
 
-? https://github.com/Spacechild1/vstplugin/blob/master/vst/Lockfree.h
+https://github.com/Spacechild1/vstplugin/blob/master/vst/Lockfree.h
 
 https://github.com/marcusspangenberg/waitfreequeue/blob/main/spsc_queue.h
 -
