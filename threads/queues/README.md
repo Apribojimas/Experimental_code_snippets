@@ -36,3 +36,4 @@
 # Extra ...
 * https://github.com/mpoeter/xenium
 * https://github.com/emaxerrno/xenium
+* https://github.com/LiShuMing/xlab/blob/main/cc/algo/src/algo/algo_lock_free_queue.cc
