@@ -28,3 +28,6 @@
 * https://github.com/craflin/LockFreeQueue/blob/master/mpmc_bounded_queue.h
 * https://github.com/kmdreko/wilt-ring/blob/master/wilt-ring/ring.h indestructor
 * https://github.com/drogalis/mpmc-queue/blob/main/include/dro/mpmc-queue.hpp with benchmarks
+
+# Unbounded MPMC
+* https://github.com/mehdi-goli/MC-FastFlow-PEI/blob/master/ff/MPMCqueues.hpp
