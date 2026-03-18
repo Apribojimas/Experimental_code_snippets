@@ -1,4 +1,5 @@
 # Thread safe queue
+* https://github.com/Vendrik/Ciccio-Lippo/blob/master/LockFreeQueue.h
 * https://github.com/SFTtech/openage/blob/master/libopenage/datastructure/concurrent_queue.h
 * https://github.com/Octopus773/Babel/blob/main/Common/Utilities/TSQueue.hpp
 * https://github.com/wrkzcoin/wrkzcoin/blob/development/src/utilities/ThreadSafeQueue.h
