@@ -1,4 +1,5 @@
 # Thread safe queue
+* https://github.com/glensand/hope/blob/master/lib/hope/concurrency/spsc_queue.h
 * https://github.com/Vendrik/Ciccio-Lippo/blob/master/LockFreeQueue.h
 * https://github.com/SFTtech/openage/blob/master/libopenage/datastructure/concurrent_queue.h
 * https://github.com/Octopus773/Babel/blob/main/Common/Utilities/TSQueue.hpp
