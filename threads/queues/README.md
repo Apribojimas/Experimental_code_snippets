@@ -39,3 +39,16 @@
 * https://github.com/emaxerrno/xenium
 * https://github.com/LiShuMing/xlab/blob/main/cc/algo/src/algo/algo_lock_free_queue.cc
 * https://github.com/Fgrtue/Lock-Free-Data-Structures
+
+# Source of ideas
+* https://github.com/Fgrtue/Lock-Free-Data-Structures/blob/main/include/lock-free-spsc-queue.hpp
+* https://github.com/EthanCornell/DSAlib/blob/db58b2bf962cc6b3c7e7fa522486a9efbd630595/Concurrent%20DataStructure/CPP/Queue/lockfree_queue.cpp
+* https://github.com/krish567366/submicro-execution-engine/blob/main/include/lockfree_queue.hpp
+* https://github.com/afekz/spartan/blob/master/log.hpp  Emplace/Object lifecycle
+* https://github.com/chronoxor/CppBenchmark/blob/master/examples/lockfree/spsc-queue.hpp
+* https://github.com/EfficientMoE/MoE-Infinity/blob/main/core/utils/lockfree_queue.h std::shared_ptr
+* https://github.com/xinfushe/CRYENGINE-1/blob/release/Code/CryEngine/RenderDll/XRenderD3D9/DX12/Includes/concqueue-spsc.hpp
+* https://github.com/Vendrik/Ciccio-Lippo/blob/master/LockFreeQueue.h  Support memory blocks
+* https://github.com/glensand/hope/blob/master/lib/hope/concurrency/spsc_queue.h separated node creation
+* https://github.com/ouonline/threadkit/blob/master/include/threadkit/spsc_queue.h docs
+https://github.com/jk983294/concurrent/blob/master/src/lockfree/SpscBoundedQueue.h check for is_constructible
