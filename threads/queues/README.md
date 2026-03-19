@@ -30,6 +30,11 @@
 * https://github.com/craflin/LockFreeQueue/blob/master/mpmc_bounded_queue.h
 * https://github.com/kmdreko/wilt-ring/blob/master/wilt-ring/ring.h indestructor
 * https://github.com/drogalis/mpmc-queue/blob/main/include/dro/mpmc-queue.hpp with benchmarks
+* https://github.com/Donald-Rupin/mpsc_zib/blob/main/includes/zib/wait_mpsc_queue.hpp with benchmark and wait
+* https://github.com/dakingffo/MPSC_queue/blob/master/include/daking/MPSC_queue.hpp
+* https://github.com/Spacechild1/vstplugin/blob/master/vst/Lockfree.h
+* https://github.com/qrp73/SDRPP/blob/master/core/src/utils/mpsc_queue.h small
+* https://github.com/rigtorp/MPMCQueue/blob/master/include/rigtorp/MPMCQueue.h  Tested?
 
 # Unbounded MPMC
 * https://github.com/mehdi-goli/MC-FastFlow-PEI/blob/master/ff/MPMCqueues.hpp
@@ -38,7 +43,7 @@
 * https://github.com/mpoeter/xenium
 * https://github.com/emaxerrno/xenium
 * https://github.com/LiShuMing/xlab/blob/main/cc/algo/src/algo/algo_lock_free_queue.cc
-* https://github.com/Fgrtue/Lock-Free-Data-Structures
+* https://github.com/mpoeter/xenium/blob/main/xenium/detail/growing_circular_array.hpp
 
 # Source of ideas
 * https://github.com/Fgrtue/Lock-Free-Data-Structures/blob/main/include/lock-free-spsc-queue.hpp
@@ -51,4 +56,8 @@
 * https://github.com/Vendrik/Ciccio-Lippo/blob/master/LockFreeQueue.h  Support memory blocks
 * https://github.com/glensand/hope/blob/master/lib/hope/concurrency/spsc_queue.h separated node creation
 * https://github.com/ouonline/threadkit/blob/master/include/threadkit/spsc_queue.h docs
-https://github.com/jk983294/concurrent/blob/master/src/lockfree/SpscBoundedQueue.h check for is_constructible
+* https://github.com/jk983294/concurrent/blob/master/src/lockfree/SpscBoundedQueue.h check for is_constructible
+
+# Docs & links
+* https://github.com/jfuentes/concurrent-data-structures?tab=readme-ov-file
+* https://github.com/Fgrtue/Lock-Free-Data-Structures
