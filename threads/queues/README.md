@@ -15,6 +15,7 @@
 * https://github.com/RedFox20/ReCpp/blob/master/src/rpp/concurrent_queue.h
 
 # SPSC
+* https://github.com/connorbakaj/lockfree/blob/master/src/spsc/include/lockfree/spsc.h
 * https://github.com/rigtorp/SPSCQueue/blob/master/include/rigtorp/SPSCQueue.h
 * https://github.com/MengRao/SPSC_Queue/blob/master/SPSCQueue.h
 * https://github.com/drogalis/SPSC-Queue/blob/main/include/dro/spsc-queue.hpp with benchmarks
